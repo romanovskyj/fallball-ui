@@ -1,8 +1,13 @@
 # Fallball
 
 ## Deploy
-1. Install all required modules
+Install all required modules
 ```
 cd fallball-ui
 npm install
+```
+## Run
+Start application
+```
+npm start
 ```
