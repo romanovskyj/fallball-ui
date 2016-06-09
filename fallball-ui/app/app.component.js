@@ -9,14 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var user_service_1 = require('./user.service');
+var auth_component_1 = require('./auth.component');
+var control_panel_component_1 = require('./control-panel.component');
+var router_deprecated_1 = require('@angular/router-deprecated');
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = 'FallBall';
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>FallBall</h1>'
-        }), 
+            template: "\n    <h1>{{title}}</h1>\n    <router-outlet></router-outlet>\n  ",
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            providers: [
+                router_deprecated_1.ROUTER_PROVIDERS,
+                user_service_1.UserService
+            ]
+        }),
+        router_deprecated_1.RouteConfig([
+            {
+                path: '/auth',
+                name: 'Authentication',
+                component: auth_component_1.AuthComponent,
+                useAsDefault: true
+            },
+            {
+                path: '/cp',
+                name: 'ControlPanel',
+                component: control_panel_component_1.ControlPanelComponent
+            }
+        ]), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
