@@ -10,28 +10,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var router_deprecated_1 = require('@angular/router-deprecated');
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var user_1 = require('./user');
 var AuthComponent = (function () {
-    function AuthComponent(router) {
+    function AuthComponent(router, http) {
         this.router = router;
+        this.http = http;
         this.title = 'FallBall';
         this.header = 'User Control Panel';
         this.username = 'john';
         this.model = new user_1.User('', '');
+        this.valid_credentials = true;
         this.submitted = false;
     }
+    AuthComponent.prototype.handleError = function (error) {
+        console.error('An error occurred', error);
+    };
+    AuthComponent.prototype.resolve = function () {
+    };
+    AuthComponent.prototype.reject = function () {
+    };
     AuthComponent.prototype.onSubmit = function () {
-        if (this.model.name == 'john' && this.model.name == 'john') {
-            var link = ['ControlPanel'];
-            this.router.navigate(link);
-        }
+        var _this = this;
+        //encode credentials for basic authentication
+        var credentials = this.model.name + ':' + this.model.password;
+        var encoded_credentials = btoa(credentials);
+        //send request to check if credentials are correct
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'Basic ' + encoded_credentials);
+        var url = 'http://localhost:8000/v1/users/';
+        this.http.get(url, { headers: headers })
+            .toPromise()
+            .then(function () { (function (response) { return response.json().data; }); var link = ['ControlPanel']; _this.router.navigate(link); }, function () { _this.valid_credentials = false; })
+            .catch(this.handleError);
     };
     AuthComponent = __decorate([
         core_1.Component({
             selector: 'auth',
             templateUrl: 'app/templates/auth.component.html'
         }), 
-        __metadata('design:paramtypes', [router_deprecated_1.Router])
+        __metadata('design:paramtypes', [router_deprecated_1.Router, http_1.Http])
     ], AuthComponent);
     return AuthComponent;
 }());

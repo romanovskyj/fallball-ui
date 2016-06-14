@@ -1,13 +1,13 @@
 <h3 class="form-signin-heading">Sign in</h3>
-<form (ngSubmit)="onSubmit()" class="form-signin col-lg-3">
+<div [hidden]="valid_credentials" class="alert alert-danger" >This user/password data is invalid</div>
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" class="form-signin col-lg-3">
   <div>
       <label for="id">Username:</label>
       <input type="text" [(ngModel)]="model.name" class="form-control" required>
-      test: {{model.name}}
   </div>
   <div>
       <label for="password">Password: </label>
       <input type="password" [(ngModel)]="model.password" class="form-control" required>
   </div>
-  <button type="submit">Login</button>
+  <button type="submit" [disabled]="!userForm.form.valid">Login</button>
 </form>
