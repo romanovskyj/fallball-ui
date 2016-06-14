@@ -10,13 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var router_deprecated_1 = require('@angular/router-deprecated');
 var core_1 = require('@angular/core');
+var user_1 = require('./user');
 var AuthComponent = (function () {
     function AuthComponent(router) {
         this.router = router;
         this.title = 'FallBall';
         this.header = 'User Control Panel';
         this.username = 'john';
+        this.model = new user_1.User('', '');
+        this.submitted = false;
     }
+    AuthComponent.prototype.onSubmit = function () { this.submitted = true; };
     AuthComponent.prototype.validate = function () {
         var link = ['ControlPanel'];
         this.router.navigate(link);

@@ -9,8 +9,10 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router
 @Component({
   selector: 'my-app',
   template: `
+    <div class="container">
     <h1>{{title}}</h1>
     <router-outlet></router-outlet>
+    </div>
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [
