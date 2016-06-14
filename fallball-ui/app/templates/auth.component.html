@@ -1,5 +1,5 @@
 <h3 class="form-signin-heading">Sign in</h3>
-<form class="form-signin col-lg-3">
+<form (ngSubmit)="onSubmit()" class="form-signin col-lg-3">
   <div>
       <label for="id">Username:</label>
       <input type="text" [(ngModel)]="model.name" class="form-control" required>
@@ -9,5 +9,5 @@
       <label for="password">Password: </label>
       <input type="password" [(ngModel)]="model.password" class="form-control" required>
   </div>
-  <button (click)="validate()">Login</button>
+  <button type="submit">Login</button>
 </form>

@@ -20,10 +20,11 @@ var AuthComponent = (function () {
         this.model = new user_1.User('', '');
         this.submitted = false;
     }
-    AuthComponent.prototype.onSubmit = function () { this.submitted = true; };
-    AuthComponent.prototype.validate = function () {
-        var link = ['ControlPanel'];
-        this.router.navigate(link);
+    AuthComponent.prototype.onSubmit = function () {
+        if (this.model.name == 'john' && this.model.name == 'john') {
+            var link = ['ControlPanel'];
+            this.router.navigate(link);
+        }
     };
     AuthComponent = __decorate([
         core_1.Component({

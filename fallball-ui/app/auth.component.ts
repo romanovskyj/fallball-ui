@@ -20,10 +20,12 @@ export class AuthComponent {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    
+    if (this.model.name == 'john' && this.model.name == 'john') {
+      let link = ['ControlPanel'];
+      this.router.navigate(link);
+    }
 
-  validate() {
-    let link = ['ControlPanel'];
-    this.router.navigate(link);
   }
 }
