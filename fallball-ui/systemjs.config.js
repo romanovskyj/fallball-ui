@@ -28,11 +28,14 @@
     'upgrade',
   ];
 
+  //material2 components
   var ngMaterial = [
      'core',
     'button',
     'card',
-    'toolbar'
+    'toolbar',
+    'input',
+    'card'
   ]
 
   // Load angular2 material

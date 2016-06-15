@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, enableProdMode } from '@angular/core';
 
 import { AuthComponent } from './auth.component';
 import { ControlPanelComponent } from './control-panel.component';
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
-import { MdToolbar } from '@angular2-material/toolbar';
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+
+enableProdMode();
 
 @Component({
   selector: 'my-app',
   template: `
     <div class="container">
-    <md-toolbar color="primary">{{title}}</md-toolbar>
+    <md-toolbar>
+      <h1>{{title}}</h1>
+    </md-toolbar>
     <router-outlet></router-outlet>
     </div>
   `,
-  directives: [ROUTER_DIRECTIVES],
-  providers: [
-    ROUTER_PROVIDERS,
-    MdToolbar
-  ]
+  directives: [ROUTER_DIRECTIVES
+  ],
+  providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
   {

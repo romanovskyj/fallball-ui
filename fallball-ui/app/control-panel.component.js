@@ -1,3 +1,6 @@
+/*
+  User control panel
+*/
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -15,6 +18,7 @@ var ControlPanelComponent = (function () {
         this.router = router;
         this.title = 'FallBall';
         this.header = 'User Control Panel';
+        //get data from localstorage and parse it to show in template
         var user_data = JSON.parse(localStorage.getItem('user_data'));
         this.username = user_data.id;
         this.usage = user_data.storage.usage;

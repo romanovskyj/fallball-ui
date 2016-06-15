@@ -8,9 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/*
+  Authorization form component
+*/
 var router_deprecated_1 = require('@angular/router-deprecated');
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+//material2 components
+var button_1 = require('@angular2-material/button');
+var card_1 = require('@angular2-material/card');
+var input_1 = require('@angular2-material/input');
 require('rxjs/add/operator/toPromise');
 var user_1 = require('./user');
 var AuthComponent = (function () {
@@ -29,18 +36,19 @@ var AuthComponent = (function () {
         //encode credentials for basic authentication
         var credentials = this.model.name + ':' + this.model.password;
         var encoded_credentials = btoa(credentials);
-        //send request to check if credentials are correct
+        //prepare request
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Basic ' + encoded_credentials);
         var url = 'http://localhost:8000/v1/users/';
+        //send request to check if credentials are correct
         this.http.get(url, { headers: headers })
             .toPromise()
             .then(function (res) {
-            // if credentials are valid
+            // if credentials are valid keep user data inside local storage
             (function (response) { return response.json().data; });
             console.log(res.json());
-            //localStorage.setItem('user_data', JSON.stringify(res.json());
+            localStorage.setItem('user_data', JSON.stringify(res.json()));
             var link = ['ControlPanel'];
             _this.router.navigate(link);
         }, function () {
@@ -53,6 +61,10 @@ var AuthComponent = (function () {
         core_1.Component({
             selector: 'auth',
             templateUrl: 'app/templates/auth.component.html',
+            directives: [input_1.MD_INPUT_DIRECTIVES,
+                card_1.MD_CARD_DIRECTIVES,
+                button_1.MD_BUTTON_DIRECTIVES
+            ]
         }), 
         __metadata('design:paramtypes', [router_deprecated_1.Router, http_1.Http])
     ], AuthComponent);
