@@ -5,10 +5,11 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from './user';
+import { BazService } from './user-data';
 
 @Component({
   selector: 'auth',
-  templateUrl: 'app/templates/auth.component.html'
+  templateUrl: 'app/templates/auth.component.html',
 })
 export class AuthComponent { 
   constructor(private router: Router,
@@ -17,10 +18,6 @@ export class AuthComponent {
 
   }
 
-  title = 'FallBall';
-  header = 'User Control Panel';
-  username = 'john';
-
   model = new User('','');
   valid_credentials = true;
 
@@ -28,14 +25,6 @@ export class AuthComponent {
 
   private handleError(error: any) {
     console.error('An error occurred', error);
-  }
-
-  private resolve() {
-    
-  }
-
-  private reject() {
-
   }
 
   onSubmit() {
@@ -51,8 +40,20 @@ export class AuthComponent {
     let url = 'http://localhost:8000/v1/users/';
 
     this.http.get(url, { headers: headers })
-    .toPromise()
-      .then(() => { response => response.json().data; let link = ['ControlPanel']; this.router.navigate(link); }, () => { this.valid_credentials = false})
-                       .catch(this.handleError);
+             .toPromise()
+             .then((res) => { 
+                           // if credentials are valid
+                           response => response.json().data; 
+                           console.log(res.json());
+                           //localStorage.setItem('user_data', JSON.stringify(res.json());
+                           let link = ['ControlPanel']; 
+                           this.router.navigate(link); 
+                         }, 
+                   () => { 
+                           // if credentials are invalid
+                           this.valid_credentials = false
+                         }
+                  )
+             .catch(this.handleError);
   }
 }

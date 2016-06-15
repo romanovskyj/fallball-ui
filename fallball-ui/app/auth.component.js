@@ -17,19 +17,12 @@ var AuthComponent = (function () {
     function AuthComponent(router, http) {
         this.router = router;
         this.http = http;
-        this.title = 'FallBall';
-        this.header = 'User Control Panel';
-        this.username = 'john';
         this.model = new user_1.User('', '');
         this.valid_credentials = true;
         this.submitted = false;
     }
     AuthComponent.prototype.handleError = function (error) {
         console.error('An error occurred', error);
-    };
-    AuthComponent.prototype.resolve = function () {
-    };
-    AuthComponent.prototype.reject = function () {
     };
     AuthComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -43,13 +36,23 @@ var AuthComponent = (function () {
         var url = 'http://localhost:8000/v1/users/';
         this.http.get(url, { headers: headers })
             .toPromise()
-            .then(function () { (function (response) { return response.json().data; }); var link = ['ControlPanel']; _this.router.navigate(link); }, function () { _this.valid_credentials = false; })
+            .then(function (res) {
+            // if credentials are valid
+            (function (response) { return response.json().data; });
+            console.log(res.json());
+            //localStorage.setItem('user_data', JSON.stringify(res.json());
+            var link = ['ControlPanel'];
+            _this.router.navigate(link);
+        }, function () {
+            // if credentials are invalid
+            _this.valid_credentials = false;
+        })
             .catch(this.handleError);
     };
     AuthComponent = __decorate([
         core_1.Component({
             selector: 'auth',
-            templateUrl: 'app/templates/auth.component.html'
+            templateUrl: 'app/templates/auth.component.html',
         }), 
         __metadata('design:paramtypes', [router_deprecated_1.Router, http_1.Http])
     ], AuthComponent);

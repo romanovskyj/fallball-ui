@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
-import { UserService } from './user.service';
 import { AuthComponent } from './auth.component';
 import { ControlPanelComponent } from './control-panel.component';
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
+
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button;
 
 @Component({
   selector: 'my-app',
@@ -17,7 +19,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router
   directives: [ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,
-    UserService
+    MD_CARD_DIRECTIVES, 
+    MD_BUTTON_DIRECTIVES
   ]
 })
 @RouteConfig([

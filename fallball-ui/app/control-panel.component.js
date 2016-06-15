@@ -15,7 +15,10 @@ var ControlPanelComponent = (function () {
         this.router = router;
         this.title = 'FallBall';
         this.header = 'User Control Panel';
-        this.username = 'john';
+        var user_data = JSON.parse(localStorage.getItem('user_data'));
+        this.username = user_data.id;
+        this.usage = user_data.storage.usage;
+        this.limit = user_data.storage.limit;
     }
     ControlPanelComponent.prototype.signOut = function () {
         var link = ['Authentication'];

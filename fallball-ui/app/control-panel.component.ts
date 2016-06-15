@@ -8,11 +8,19 @@ import { Component } from '@angular/core';
 })
 export class ControlPanelComponent {
   constructor(private router: Router) {
-
+    let user_data = JSON.parse(localStorage.getItem('user_data'));
+    this.username = user_data.id;
+    this.usage = user_data.storage.usage 
+    this.limit = user_data.storage.limit
   }
   title = 'FallBall';
   header = 'User Control Panel';
-  username = 'john';
+  
+  // user data
+  username;
+  usage;
+  limit;
+
 
   signOut() {
     let link = ['Authentication'];
