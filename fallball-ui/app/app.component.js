@@ -12,8 +12,7 @@ var core_1 = require('@angular/core');
 var auth_component_1 = require('./auth.component');
 var control_panel_component_1 = require('./control-panel.component');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var card_1 = require('@angular2-material/card');
-var button_1 = require('@angular2-material/button;);
+var toolbar_1 = require('@angular2-material/toolbar');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'FallBall';
@@ -21,12 +20,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class=\"container\">\n    <h1>{{title}}</h1>\n    <router-outlet></router-outlet>\n    </div>\n  ",
+            template: "\n    <div class=\"container\">\n    <md-toolbar color=\"primary\">{{title}}</md-toolbar>\n    <router-outlet></router-outlet>\n    </div>\n  ",
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
-                card_1.MD_CARD_DIRECTIVES,
-                button_1.MD_BUTTON_DIRECTIVES
+                toolbar_1.MdToolbar
             ]
         }),
         router_deprecated_1.RouteConfig([

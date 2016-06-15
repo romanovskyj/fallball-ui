@@ -8,7 +8,7 @@
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
-    '@angular2-material':         'vendor/@angular2-material'
+    '@angular2-material':         'node_modules/@angular2-material'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -32,11 +32,12 @@
      'core',
     'button',
     'card',
+    'toolbar'
   ]
 
   // Load angular2 material
   function materialIndex(pkgName) {
-    packages['@angular2-material/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
+    packages['@angular2-material/'+pkgName] = { main: `${pkgName}.js` };
   }
 
   // Individual files (~300 requests):

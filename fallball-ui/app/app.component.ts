@@ -5,22 +5,20 @@ import { ControlPanelComponent } from './control-panel.component';
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
-import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
-import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button;
+import { MdToolbar } from '@angular2-material/toolbar';
 
 @Component({
   selector: 'my-app',
   template: `
     <div class="container">
-    <h1>{{title}}</h1>
+    <md-toolbar color="primary">{{title}}</md-toolbar>
     <router-outlet></router-outlet>
     </div>
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,
-    MD_CARD_DIRECTIVES, 
-    MD_BUTTON_DIRECTIVES
+    MdToolbar
   ]
 })
 @RouteConfig([
