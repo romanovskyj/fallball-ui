@@ -1,5 +1,11 @@
-<h2>{{header}}</h2>
-<div>Hi, {{username}}! welcome to File Sharing solution.</div>
-<div>Currently, you use {{usage}} out of {{limit}} GB</div>
+<div>
+  <h2>{{header}}</h2>
+</div>
+<md-card style="width: 800px;">
+<div>Hi, <b>{{username}}</b>! welcome to file sharing solution.</div>
+<div>Currently, you use <b>{{usage}}</b> out of <b>{{limit}}</b> GB</div>
 <div>In order to start share and collaborate with your documents download desktop client which is located <a href="static/binaries/fallball-installer.exe">here.</a></div>
-<button (click)="signOut()">Sign Out</button>
+<div align="center">
+  <button md-button (click)="signOut()">Sign Out</button>
+</div>
+</md-card>

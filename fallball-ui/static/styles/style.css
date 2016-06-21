@@ -1,5 +1,5 @@
 h1 {
-  color: #369;
+  color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
@@ -12,5 +12,15 @@ body {
   margin: 2em;
 }
 div {
-	font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+md-toolbar {
+  background: #000000;
+}
+
+.warn {
+  background-color: #F44336; 
+  color: #FFFFFF; 
+  padding: 5px;
+  margin: 5px;
 }

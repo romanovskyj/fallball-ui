@@ -77,8 +77,8 @@ Temporary Items
 
 #####=== Node ===#####
 
-# Mappings
-*.map
+# dist
+dist
 
 # Logs
 logs

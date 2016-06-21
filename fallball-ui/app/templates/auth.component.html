@@ -1,9 +1,11 @@
-<h3 class="form-signin-heading">Sign in</h3>
+<div>
+  <h2>{{header}}</h2>
+</div>
 <form (ngSubmit)="onSubmit()" #userForm="ngForm" class="form-signin col-lg-3">
-  <md-card class="app-input-selection">
-  	  <div [hidden]="valid_credentials" class="alert alert-danger" >This user/password data is invalid</div>
+  <md-card color="primary" class="app-input-selection" style="width: 550px;">
+      <div color="warn" class="warn" [hidden]="valid_credentials" >This user/password data is invalid</div>
       <md-input type="text" [(ngModel)]="model.name" class="form-control" placeholder="Username" required></md-input>
       <md-input type="password" [(ngModel)]="model.password" class="form-control" placeholder="password" required></md-input>
-      <button md-button-flat type="submit" [disabled]="!userForm.form.valid">Login</button>
+      <button md-button type="submit" [disabled]="!userForm.form.valid">Login</button>
   </md-card>
 </form>

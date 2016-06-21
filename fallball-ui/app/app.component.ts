@@ -5,22 +5,23 @@ import { ControlPanelComponent } from './control-panel.component';
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
-import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import {MdToolbar} from '@angular2-material/toolbar';
 
 enableProdMode();
 
 @Component({
+  directives: [ROUTER_DIRECTIVES,
+               MD_CARD_DIRECTIVES,
+               MdToolbar
+  ],
   selector: 'my-app',
   template: `
-    <div class="container">
-    <md-toolbar>
+  <md-toolbar color="primary"> 
       <h1>{{title}}</h1>
-    </md-toolbar>
+  </md-toolbar>
     <router-outlet></router-outlet>
-    </div>
   `,
-  directives: [ROUTER_DIRECTIVES
-  ],
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([

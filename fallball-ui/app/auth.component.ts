@@ -23,16 +23,18 @@ import { User } from './user';
   ]
 })
 export class AuthComponent { 
+  header = 'Sign in'
+  //representation of fallball clienuser model
+  model = new User('', '');
+  submitted = false;
+  //variable for showing wrong alerts mechanism
+  valid_credentials = true;
+
   constructor(private router: Router,
               private http: Http
   ) {
 
   }
-
-  model = new User('','');
-  valid_credentials = true;
-
-  submitted = false;
 
   private handleError(error: any) {
     console.error('An error occurred', error);
