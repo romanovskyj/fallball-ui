@@ -1,19 +1,18 @@
 import { Component, enableProdMode } from '@angular/core';
-
-import { AuthComponent } from './auth.component';
-import { ControlPanelComponent } from './control-panel.component';
-
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdToolbar} from '@angular2-material/toolbar';
+
+import { AuthComponent } from './auth.component';
+import { ControlPanelComponent } from './control-panel.component';
 
 enableProdMode();
 
 @Component({
   directives: [ROUTER_DIRECTIVES,
                MD_CARD_DIRECTIVES,
-               MdToolbar
+               MdToolbar,
   ],
   selector: 'my-app',
   template: `
@@ -29,15 +28,14 @@ enableProdMode();
     path: '/auth',
     name: 'Authentication',
     component: AuthComponent,
-    useAsDefault: true
+    useAsDefault: true,
   },
   {
     path: '/cp',
     name: 'ControlPanel',
-    component: ControlPanelComponent
+    component: ControlPanelComponent,
   }
 ])
 export class AppComponent {
   title = 'FallBall';
-
 }

@@ -3,7 +3,7 @@
 </div>
 <form (ngSubmit)="onSubmit()" #userForm="ngForm" class="form-signin col-lg-3">
   <md-card color="primary" class="app-input-selection" style="width: 550px;">
-      <div color="warn" class="warn" [hidden]="valid_credentials" >This user/password data is invalid</div>
+      <div color="warn" class="warn" [hidden]="validCredentials" >This user/password data is invalid</div>
       <md-input type="text" [(ngModel)]="model.name" class="form-control" placeholder="Username" required></md-input>
       <md-input type="password" [(ngModel)]="model.password" class="form-control" placeholder="password" required></md-input>
       <button md-button type="submit" [disabled]="!userForm.form.valid">Login</button>

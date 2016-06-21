@@ -1,9 +1,9 @@
 /*
   Authorization form component
 */
-import { Router } from '@angular/router-deprecated';
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router-deprecated';
 
 //material2 components
 import {MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
@@ -19,7 +19,7 @@ import { User } from './user';
   templateUrl: 'app/templates/auth.component.html',
   directives: [MD_INPUT_DIRECTIVES,
                MD_CARD_DIRECTIVES,
-               MD_BUTTON_DIRECTIVES
+               MD_BUTTON_DIRECTIVES,
   ]
 })
 export class AuthComponent { 
@@ -28,13 +28,11 @@ export class AuthComponent {
   model = new User('', '');
   submitted = false;
   //variable for showing wrong alerts mechanism
-  valid_credentials = true;
+  validCredentials = true;
 
   constructor(private router: Router,
               private http: Http
-  ) {
-
-  }
+  ) {}
 
   private handleError(error: any) {
     console.error('An error occurred', error);
@@ -43,12 +41,12 @@ export class AuthComponent {
   onSubmit() {
     //encode credentials for basic authentication
     let credentials = this.model.name + ':' + this.model.password;
-    let encoded_credentials = btoa(credentials);
+    let encodedCredentials = btoa(credentials);
 
     //prepare request
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Basic ' + encoded_credentials);
+    headers.append('Authorization', 'Basic ' + encodedCredentials);
     let url = 'http://localhost:8000/v1/users/';
 
     //send request to check if credentials are correct
@@ -58,13 +56,13 @@ export class AuthComponent {
                            // if credentials are valid keep user data inside local storage
                            response => response.json().data; 
                            console.log(res.json());
-                           localStorage.setItem('user_data', JSON.stringify(res.json()));
+                           localStorage.setItem('userData', JSON.stringify(res.json()));
                            let link = ['ControlPanel']; 
                            this.router.navigate(link); 
                          }, 
                    () => { 
                            // if credentials are invalid
-                           this.valid_credentials = false
+                           this.validCredentials = false;
                          }
                   )
              .catch(this.handleError);
