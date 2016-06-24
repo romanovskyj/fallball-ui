@@ -14,6 +14,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { User } from './user';
 
+
 @Component({
   selector: 'auth',
   templateUrl: 'app/templates/auth.component.html',
