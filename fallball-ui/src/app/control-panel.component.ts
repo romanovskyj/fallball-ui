@@ -9,7 +9,7 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 
 @Component({
   selector: 'cp',
-  templateUrl: 'app/templates/control-panel.component.html',
+  templateUrl: 'templates/control-panel.component.html',
   directives: [MD_CARD_DIRECTIVES],
 })
 export class ControlPanelComponent {

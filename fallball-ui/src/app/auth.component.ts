@@ -17,7 +17,7 @@ import { User } from './user';
 
 @Component({
   selector: 'auth',
-  templateUrl: 'app/templates/auth.component.html',
+  templateUrl: 'templates/auth.component.html',
   directives: [MD_INPUT_DIRECTIVES,
                MD_CARD_DIRECTIVES,
                MD_BUTTON_DIRECTIVES,
