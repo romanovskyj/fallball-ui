@@ -4,11 +4,11 @@
 (function(global) {
   // map tells the System loader where to look for things
   var map = {
-    'app':                        'dist',
-    '@angular':                   'libs/@angular',
-    'angular2-in-memory-web-api': 'libs/angular2-in-memory-web-api',
-    'rxjs':                       'libs/rxjs',
-    '@angular2-material':         'libs/@angular2-material'
+    'app':                        'dist/app',
+    '@angular':                   'dist/lib/@angular',
+    'angular2-in-memory-web-api': 'dist/lib/angular2-in-memory-web-api',
+    'rxjs':                       'dist/lib/rxjs',
+    '@angular2-material':         'dist/lib/@angular2-material'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {

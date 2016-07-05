@@ -25,11 +25,10 @@ import { User } from './user';
 })
 export class AuthComponent { 
   header = 'Sign in'
-  //representation of fallball clienuser model
   model = new User('', '');
   submitted = false;
-  //variable for showing wrong alerts mechanism
   validCredentials = true;
+  myUrl;
 
   constructor(private router: Router,
               private http: Http
@@ -40,32 +39,36 @@ export class AuthComponent {
   }
 
   onSubmit() {
-    //encode credentials for basic authentication
     let credentials = this.model.name + ':' + this.model.password;
     let encodedCredentials = btoa(credentials);
 
-    //prepare request
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + encodedCredentials);
-    let url = 'http://localhost:8000/v1/users/';
 
-    //send request to check if credentials are correct
-    this.http.get(url, { headers: headers })
-             .toPromise()
-             .then((res) => { 
-                           // if credentials are valid keep user data inside local storage
+    this.http.get('config.json')
+      .toPromise()
+      .then((res) => {
+              response => response.json().data;
+              this.myUrl = res.json().apiBaseUrl;
+
+              this.http.get(this.myUrl, { headers: headers })
+                .toPromise()
+                .then((res) => { 
                            response => response.json().data; 
                            console.log(res.json());
                            localStorage.setItem('userData', JSON.stringify(res.json()));
                            let link = ['ControlPanel']; 
                            this.router.navigate(link); 
                          }, 
-                   () => { 
-                           // if credentials are invalid
+                   () => {
                            this.validCredentials = false;
                          }
                   )
              .catch(this.handleError);
+
+            },
+            () => {})
+      .catch();
   }
 }

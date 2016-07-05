@@ -9,8 +9,11 @@ module.exports = function() {
             'systemjs/dist/system.src.js',
             'reflect-metadata/Reflect.js',
             'rxjs/**',
+            'core-js/**',
             'zone.js/dist/**',
-            '@angular/**'
+            '@angular/**',
+            'toolbar/**',
+            '@angular2-material/**'
         ], {cwd: "node_modules/**"})
         .pipe(gulp.dest("dist/lib"));
 };
