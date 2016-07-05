@@ -56,14 +56,13 @@ export class AuthComponent {
                 .toPromise()
                 .then((res) => { 
                            response => response.json().data; 
-                           console.log(res.json());
                            localStorage.setItem('userData', JSON.stringify(res.json()));
                            let link = ['ControlPanel']; 
                            this.router.navigate(link); 
                          }, 
-                   () => {
+                      () => {
                            this.validCredentials = false;
-                         }
+                      }
                   )
              .catch(this.handleError);
 
