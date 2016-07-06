@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router-deprecated';
 
-//material2 components
 import {MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
@@ -23,8 +22,8 @@ import { User } from './user';
                MD_BUTTON_DIRECTIVES,
   ]
 })
-export class AuthComponent { 
-  header = 'Sign in'
+export class AuthComponent {
+  header = 'Sign in';
   model = new User('', '');
   submitted = false;
   validCredentials = true;
@@ -54,18 +53,16 @@ export class AuthComponent {
 
               this.http.get(this.myUrl, { headers: headers })
                 .toPromise()
-                .then((res) => { 
-                           response => response.json().data; 
+                .then((res) => {
+                           response => response.json().data;
                            localStorage.setItem('userData', JSON.stringify(res.json()));
-                           let link = ['ControlPanel']; 
-                           this.router.navigate(link); 
-                         }, 
+                           let link = ['ControlPanel'];
+                           this.router.navigate(link);
+                         },
                       () => {
                            this.validCredentials = false;
-                      }
-                  )
-             .catch(this.handleError);
-
+                })
+                .catch(this.handleError);
             },
             () => {})
       .catch();

@@ -4,5 +4,5 @@ const gulp = require('gulp');
 
 module.exports = function() {
   return gulp.src(["src/**/*", "!src/**/*.ts"])
-    .pipe(gulp.dest('dist'));
+             .pipe(gulp.dest('dist'));
 }

@@ -9,6 +9,7 @@ module.exports = function() {
   const tsResult = gulp.src('src/**/*.ts')
     .pipe(sourcemaps.init())
     .pipe(tsc(tsProject));
+    
   return tsResult.js
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist"));
